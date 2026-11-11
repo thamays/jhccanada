@@ -13,16 +13,18 @@ if (!defined('ABSPATH')) exit;
 define('JHC_DIR', plugin_dir_path(__FILE__));
 define('JHC_URL', plugin_dir_url(__FILE__));
 const JHC_ADMIN_SLUG = 'jhc-admin';
-const JHC_DB_VERSION = '2';
+const JHC_DB_VERSION = '3';
 
 require_once JHC_DIR . 'includes/class-module.php';
 require_once JHC_DIR . 'includes/class-panel.php';
 require_once JHC_DIR . 'includes/class-dashboard.php';
 require_once JHC_DIR . 'includes/class-members-module.php';
+require_once JHC_DIR . 'includes/class-applications.php';
 
 /** Register every panel section here, in sidebar order. */
 function jhc_register_modules() {
     JHC_Panel::register(new JHC_Dashboard());
+    JHC_Panel::register(new JHC_Applications());
     JHC_Panel::register(new JHC_Members_Module([
         'slug' => 'life-members', 'label' => 'Life Members', 'singular' => 'life member', 'icon' => '★',
         'table' => 'jhc_life_members', 'prefix' => 'LM-', 'pad' => 3, 'page' => 'life-members', 'shortcode' => 'jhc_life_members',

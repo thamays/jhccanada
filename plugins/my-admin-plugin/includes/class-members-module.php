@@ -19,6 +19,19 @@ class JHC_Members_Module extends JHC_Module {
     private function code($no) { return $this->c['prefix'] . str_pad((string)$no, $this->c['pad'], '0', STR_PAD_LEFT); }
     private function url($args = []) { return JHC_Panel::url($this->slug(), $args); }
 
+    /* ----- API used by other modules (e.g. approving applications) ----- */
+    public function next_no() { global $wpdb; return 1 + (int)$wpdb->get_var('SELECT MAX(member_no) FROM ' . $this->t()); }
+    public function format_code($no) { return $this->code($no); }
+    public function titles() { return self::TITLES; }
+    /** Insert a member. Returns the new ID code (e.g. "LM-379") or WP_Error. */
+    public function add_member($title, $first, $last, $no = 0) {
+        global $wpdb; $t = $this->t(); $no = (int)$no ?: $this->next_no();
+        if ($wpdb->get_var($wpdb->prepare("SELECT id FROM $t WHERE member_no=%d", $no))) return new WP_Error('dup', $this->code($no) . ' already exists.');
+        $wpdb->insert($t, ['member_no' => $no, 'salutation' => in_array($title, self::TITLES, true) ? $title : 'Mr.',
+            'first_name' => $first, 'last_name' => $last, 'updated_at' => current_time('mysql')]);
+        return $this->code($no);
+    }
+
     /* ----- install / import legacy page table ----- */
     public function install() {
         global $wpdb; $t = $this->t();

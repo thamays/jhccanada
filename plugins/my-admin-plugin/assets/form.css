@@ -1,0 +1,14 @@
+.jhc-form{max-width:720px;margin:0 auto;font-family:inherit}
+.jhc-head{text-align:center;font-size:20px;color:#012f9b;margin-bottom:20px}
+.jhc-form label{display:block;font-weight:500;margin:0 0 14px}
+.jhc-form input:not([type=checkbox]):not([type=radio]),.jhc-form select,.jhc-form textarea{display:block;width:100%;margin-top:5px;padding:10px 12px;border:1px solid #b9c2dc;border-radius:6px;font:inherit;background:#fff}
+.jhc-form input:focus,.jhc-form select:focus,.jhc-form textarea:focus{outline:2px solid #012f9b;border-color:#012f9b}
+.jhc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.jhc-form fieldset{border:1px solid #dde2ee;border-radius:8px;padding:12px 16px 4px;margin:0 0 16px}.jhc-form legend{font-weight:600;padding:0 6px}
+.jhc-opt{border:1px solid #b9c2dc;border-radius:8px;padding:12px 14px;cursor:pointer}.jhc-opt input{margin-right:8px}
+.jhc-agree label{font-weight:400;font-size:14px}.jhc-agree input{margin-right:8px}
+.jhc-btn{background:#012f9b;color:#fff;border:0;border-radius:6px;padding:12px 28px;font:inherit;font-weight:600;cursor:pointer}.jhc-btn:hover{background:#04206b}
+.jhc-err{background:#fde9e8;color:#8f1d17;border-radius:6px;padding:10px 16px;margin-bottom:16px}.jhc-err ul{margin:0;padding-left:18px}
+.jhc-ok{background:#e6f6ea;color:#14602a;border-radius:8px;padding:16px 20px;margin-bottom:20px}.jhc-ok h3{margin:0 0 6px}
+.jhc-pay{border:2px solid #04206b;border-radius:8px;padding:6px 20px 10px;margin-top:30px;font-size:14px}.jhc-pay li{margin-bottom:10px}.jhc-pay .red{color:#be2d25}
+@media(max-width:600px){.jhc-grid{grid-template-columns:1fr}}

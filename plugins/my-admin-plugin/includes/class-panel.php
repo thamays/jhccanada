@@ -72,8 +72,9 @@ class JHC_Panel {
 <aside class="side" id="side">
   <div class="brand">JHCA Canada<small>Admin panel</small></div>
   <nav>
-  <?php foreach (self::$modules as $m) printf('<a href="%s" class="%s"><span class="ic">%s</span>%s</a>',
-      esc_url(self::url($m instanceof JHC_Dashboard ? '' : $m->slug())), $m === $active ? 'on' : '', esc_html($m->icon()), esc_html($m->label())); ?>
+  <?php foreach (self::$modules as $m) printf('<a href="%s" class="%s"><span class="ic">%s</span>%s%s</a>',
+      esc_url(self::url($m instanceof JHC_Dashboard ? '' : $m->slug())), $m === $active ? 'on' : '', esc_html($m->icon()), esc_html($m->label()),
+      $m->badge() ? '<span class="badge">' . (int)$m->badge() . '</span>' : ''); ?>
   </nav>
   <div class="side-foot"><a href="<?php echo esc_url(home_url('/')); ?>" target="_blank">View site ↗</a>
   <a href="<?php echo esc_url(self::url('', ['do' => 'logout', '_wpnonce' => wp_create_nonce('jhc_logout')])); ?>">Log out (<?php echo esc_html($user->user_login); ?>)</a></div>
