@@ -1,0 +1,6 @@
+{
+  "core": null,
+  "phpVersion": "8.2",
+  "plugins": ["./plugins/my-admin-plugin"],
+  "testsEnvironment": false
+}
